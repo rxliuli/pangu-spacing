@@ -1,0 +1,173 @@
+{
+  "extension_name": {
+    "message": "Pangu Spacing"
+  },
+  "extension_description": {
+    "message": "Automatically inserts whitespace between CJK characters and half-width letters, digits and symbols on web pages."
+  },
+  "extension_title": {
+    "message": "Why can't you just add a space?"
+  },
+  "popup_subtitle": {
+    "message": "Let the God of Spacing absolve them of the sin of skipping spaces"
+  },
+  "spacing_when_load": {
+    "message": "Summon the God of Spacing when a page loads"
+  },
+  "spacing_when_click": {
+    "message": "I'll summon the God of Spacing myself"
+  },
+  "status_inactive": {
+    "message": "The God of Spacing is hiding"
+  },
+  "status_active": {
+    "message": "The God of Spacing is here"
+  },
+  "manual_spacing": {
+    "message": "Summon the God of Spacing"
+  },
+  "settings": {
+    "message": "Settings"
+  },
+  "label_settings": {
+    "message": "Settings"
+  },
+  "spacing_fail": {
+    "message": "The God of Spacing cannot be summoned here, unless you browse the web free of impure thoughts for forty-nine days"
+  },
+  "spacing_success": {
+    "message": "The God of Spacing has absolved their sins"
+  },
+  "spacing_processing": {
+    "message": "Descending..."
+  },
+  "refresh_required": {
+    "message": "Reload the page for this to take effect"
+  },
+  "add_to_blacklist": {
+    "message": "Add this site to the blocklist"
+  },
+  "already_in_list": {
+    "message": "Already on the list"
+  },
+  "options_subtitle": {
+    "message": "Automatically inserts whitespace between CJK characters and half-width letters, digits and symbols on web pages"
+  },
+  "quote": {
+    "message": "Sinologists call this whitespace \"Pangu's White\", because it splits the chaos between full-width and half-width characters. Rumor has it that people who dislike putting spaces between Chinese and English have a hard time in love: seventy percent of them marry someone they don't love at 34, and the other thirty percent end up leaving their estate to their cats. After all, love and writing both need some white space."
+  },
+  "label_spacing_mode": {
+    "message": "Spacing mode"
+  },
+  "spacing_when_click_msg": {
+    "message": "Tap the extension icon in the toolbar to summon the God of Spacing!"
+  },
+  "label_filter_mode": {
+    "message": "Sites"
+  },
+  "blacklist": {
+    "message": "Don't summon the God of Spacing on these pages"
+  },
+  "whitelist": {
+    "message": "Only summon the God of Spacing on these pages"
+  },
+  "label_blacklist": {
+    "message": "Blocklist"
+  },
+  "label_whitelist": {
+    "message": "Allowlist"
+  },
+  "button_edit": {
+    "message": "Edit"
+  },
+  "button_remove": {
+    "message": "Remove"
+  },
+  "button_save": {
+    "message": "Save"
+  },
+  "button_cancel": {
+    "message": "Cancel"
+  },
+  "empty_list": {
+    "message": "This list is empty, just like your soul"
+  },
+  "button_add_new_url": {
+    "message": "Add URL"
+  },
+  "placeholder_enter_url": {
+    "message": "Enter a URL, e.g. https://vinta.ws/*"
+  },
+  "error_invalid_match_pattern": {
+    "message": "That URL isn't in the right format! Could you try a little harder? Never mind, this is probably as good as it gets for you"
+  },
+  "button_restore_defaults": {
+    "message": "Restore defaults"
+  },
+  "confirm_restore_defaults": {
+    "message": "Restore this list to its defaults?"
+  },
+  "link_learn_match_patterns": {
+    "message": "You can use * (wildcard) in URLs"
+  },
+  "label_other_settings": {
+    "message": "Other settings"
+  },
+  "label_is_sound_effects_muted": {
+    "message": "Too noisy, mute it"
+  },
+  "label_hidden_settings": {
+    "message": "Hidden settings"
+  },
+  "label_is_text_autospace_enabled": {
+    "message": "Zen spacing"
+  },
+  "text_autospace_description": {
+    "message": "Lets <a>the browser render the gap between CJK characters and letters or digits</a> itself. It is purely visual and inserts no whitespace, so copied text is unaffected. It applies to every site, ignoring the blocklist and allowlist."
+  },
+  "text_autospace_tooltip": {
+    "message": "Lets the browser render the gap between CJK characters and letters or digits itself. It is purely visual and inserts no whitespace, so copied text is unaffected. It applies to every site, ignoring the blocklist and allowlist."
+  },
+  "text_autospace_limitations": {
+    "message": "The downside: it skips symbols, and the gap is much narrower than a real space, so it works best alongside the God of Spacing."
+  },
+  "text_autospace_not_supported": {
+    "message": "Your browser does not support this feature (CSS text-autospace)."
+  },
+  "label_is_ai_spacing_enabled": {
+    "message": "God of Spacing AI"
+  },
+  "ai_spacing_description": {
+    "message": "Some symbols (such as <code>+</code> or <code>-</code>) mean completely different things in different contexts, and the God of Spacing's static rules can only go so far in deciding whether to add a space. An LLM fills exactly that gap, so, ladies and gentlemen: God of Spacing AI has arrived!"
+  },
+  "ai_spacing_tooltip": {
+    "message": "Some symbols (such as + or -) mean completely different things in different contexts, and the God of Spacing's static rules can only go so far in deciding whether to add a space. An LLM fills exactly that gap, so, ladies and gentlemen: God of Spacing AI has arrived!"
+  },
+  "ai_spacing_description_2": {
+    "message": "It uses the browser's built-in <a>Prompt API</a> model. Everything runs on your computer (fully offline, no data is uploaded to the cloud), and more importantly it's free, so don't expect too much from the model."
+  },
+  "ai_model_unsupported": {
+    "message": "Your browser does not support this feature"
+  },
+  "ai_model_unavailable": {
+    "message": "The model can't run"
+  },
+  "ai_model_downloadable": {
+    "message": "The model is not downloaded yet"
+  },
+  "ai_model_downloading": {
+    "message": "Downloading the model"
+  },
+  "ai_model_available": {
+    "message": "The model is running"
+  },
+  "button_download_ai_model": {
+    "message": "Download model"
+  },
+  "settings_refresh_required": {
+    "message": "Some settings take effect only after the page is reloaded"
+  },
+  "credits": {
+    "message": "Based on <a>pangu.js</a> by Vinta, released under the MIT License."
+  }
+}

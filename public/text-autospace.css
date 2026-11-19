@@ -1,0 +1,11 @@
+html {
+  text-autospace: normal;
+}
+
+code,
+pre,
+textarea,
+input,
+[contenteditable]:not([contenteditable='false']) {
+  text-autospace: no-autospace;
+}

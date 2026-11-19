@@ -1,0 +1,173 @@
+{
+  "extension_name": {
+    "message": "Pangu Spacing"
+  },
+  "extension_description": {
+    "message": "自动在网页的中文和英文、数字、符号之间插入空格。（摊手）没办法，处女座都有强迫症。"
+  },
+  "extension_title": {
+    "message": "为什么你们就是不能加个空格呢？"
+  },
+  "popup_subtitle": {
+    "message": "让空格之神赦免他们不加空格的罪"
+  },
+  "spacing_when_load": {
+    "message": "网页加载后自动召唤空格之神"
+  },
+  "spacing_when_click": {
+    "message": "我要自己召唤空格之神"
+  },
+  "status_inactive": {
+    "message": "空格之神神隐中"
+  },
+  "status_active": {
+    "message": "空格之神显灵中"
+  },
+  "manual_spacing": {
+    "message": "召唤空格之神"
+  },
+  "settings": {
+    "message": "设置"
+  },
+  "label_settings": {
+    "message": "设置"
+  },
+  "spacing_fail": {
+    "message": "在这种地方是召唤不出空格之神的，除非你在七七四十九天之内都能够不怀着淫狎之念上网"
+  },
+  "spacing_success": {
+    "message": "空格之神赦免了他们的罪"
+  },
+  "spacing_processing": {
+    "message": "降临中..."
+  },
+  "refresh_required": {
+    "message": "刷新网页之后才会生效"
+  },
+  "add_to_blacklist": {
+    "message": "把这个网站加到黑名单"
+  },
+  "already_in_list": {
+    "message": "已经加过了啦"
+  },
+  "options_subtitle": {
+    "message": "自动在网页的中文和英文、数字、符号之间插入空格"
+  },
+  "quote": {
+    "message": "汉学家称这个空白字符为「盘古之白」，因为它劈开了全角字和半角字之间的混沌。江湖上也有传言，打字的时候不喜欢在中文和英文之间加空格的人，感情路都走得很辛苦，有七成的比例会在 34 岁的时候跟自己不爱的人结婚，而其余三成的人最后只能把遗产留给自己的猫。毕竟爱情跟书写都需要适时地留白。"
+  },
+  "label_spacing_mode": {
+    "message": "召唤方式"
+  },
+  "spacing_when_click_msg": {
+    "message": "点工具栏上的扩展图标来召唤空格之神！"
+  },
+  "label_filter_mode": {
+    "message": "网站"
+  },
+  "blacklist": {
+    "message": "不要在这些网页召唤空格之神"
+  },
+  "whitelist": {
+    "message": "只在这些网页召唤空格之神"
+  },
+  "label_blacklist": {
+    "message": "黑名单"
+  },
+  "label_whitelist": {
+    "message": "白名单"
+  },
+  "button_edit": {
+    "message": "编辑"
+  },
+  "button_remove": {
+    "message": "删掉"
+  },
+  "button_save": {
+    "message": "好了"
+  },
+  "button_cancel": {
+    "message": "算了"
+  },
+  "empty_list": {
+    "message": "这个列表空无一物，就跟你的灵魂一样"
+  },
+  "button_add_new_url": {
+    "message": "添加网址"
+  },
+  "placeholder_enter_url": {
+    "message": "输入网址，例如 https://vinta.ws/*"
+  },
+  "error_invalid_match_pattern": {
+    "message": "网址的格式不对啦！用心一点好不好？算了，你这辈子大概就这样了"
+  },
+  "button_restore_defaults": {
+    "message": "恢复默认设置"
+  },
+  "confirm_restore_defaults": {
+    "message": "确定要恢复默认设置吗？"
+  },
+  "link_learn_match_patterns": {
+    "message": "你可以在网址里用 *（通配符）"
+  },
+  "label_other_settings": {
+    "message": "其他设置"
+  },
+  "label_is_sound_effects_muted": {
+    "message": "太吵了，静音"
+  },
+  "label_hidden_settings": {
+    "message": "隐藏设置"
+  },
+  "label_is_text_autospace_enabled": {
+    "message": "佛系空格"
+  },
+  "text_autospace_description": {
+    "message": "让<a>浏览器直接渲染中文和英文、数字之间的间距</a>。纯视觉效果，不会插入任何空白字符，所以复制的文字不受影响。会应用到所有网站，无视黑名单和白名单。"
+  },
+  "text_autospace_tooltip": {
+    "message": "让浏览器直接渲染中文和英文、数字之间的间距。纯视觉效果，不会插入任何空白字符，所以复制的文字不受影响。会应用到所有网站，无视黑名单和白名单。"
+  },
+  "text_autospace_limitations": {
+    "message": "但是缺点是不支持符号，而且那个间距比真正的空格窄很多，建议还是跟空格之神搭配使用。"
+  },
+  "text_autospace_not_supported": {
+    "message": "你的浏览器不支持这个功能（CSS text-autospace）。"
+  },
+  "label_is_ai_spacing_enabled": {
+    "message": "空格之神 AI"
+  },
+  "ai_spacing_description": {
+    "message": "某些符号（例如 <code>+</code> 或 <code>-</code>）在不同语境下的意思完全不一样，只靠空格之神原有的静态规则来判断到底要不要加空格是有极限的，但是 LLM 正好弥补了这个不足，于是 —— 各位观众，空格之神 AI 强势登场！"
+  },
+  "ai_spacing_tooltip": {
+    "message": "某些符号（例如 + 或 -）在不同语境下的意思完全不一样，只靠空格之神原有的静态规则来判断到底要不要加空格是有极限的，但是 LLM 正好弥补了这个不足，于是 —— 各位观众，空格之神 AI 强势登场！"
+  },
+  "ai_spacing_description_2": {
+    "message": "使用浏览器内置的 <a>Prompt API</a> 模型，所有的操作只在你的电脑上运行（完全离线，没有任何数据会被上传到云端），更重要的是：不用钱，所以就不要期待这个模型有多强了。"
+  },
+  "ai_model_unsupported": {
+    "message": "你的浏览器不支持这个功能"
+  },
+  "ai_model_unavailable": {
+    "message": "模型无法运行"
+  },
+  "ai_model_downloadable": {
+    "message": "模型还没下载"
+  },
+  "ai_model_downloading": {
+    "message": "模型下载中"
+  },
+  "ai_model_available": {
+    "message": "模型运行中"
+  },
+  "button_download_ai_model": {
+    "message": "下载模型"
+  },
+  "settings_refresh_required": {
+    "message": "部分功能需要刷新网页之后才会生效"
+  },
+  "credits": {
+    "message": "基于 Vinta 的 <a>pangu.js</a>，以 MIT 许可证发布。"
+  }
+}
