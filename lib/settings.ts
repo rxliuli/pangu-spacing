@@ -1,4 +1,6 @@
-// Same keys and defaults as the pangu.js Chrome extension, so the two read each other's synced settings
+import type { UiLanguageSetting } from '@/lib/i18n'
+
+// Same keys and defaults as the pangu.js Chrome extension, so the two read each other's synced settings. ui_language is the only addition
 export interface Settings {
   spacing_mode: 'spacing_when_load' | 'spacing_when_click'
   filter_mode: 'blacklist' | 'whitelist'
@@ -7,6 +9,7 @@ export interface Settings {
   is_sound_effects_muted: boolean
   is_text_autospace_enabled: boolean
   is_ai_spacing_enabled: boolean
+  ui_language: UiLanguageSetting
 }
 
 export const DEFAULT_SETTINGS: Settings = {
@@ -26,6 +29,7 @@ export const DEFAULT_SETTINGS: Settings = {
   is_sound_effects_muted: false,
   is_text_autospace_enabled: true,
   is_ai_spacing_enabled: true,
+  ui_language: 'auto',
 }
 
 const SETTINGS_KEYS = Object.keys(DEFAULT_SETTINGS) as (keyof Settings)[]

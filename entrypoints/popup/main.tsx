@@ -1,7 +1,11 @@
 import ReactDOM from 'react-dom/client'
 import '@/assets/style.css'
-import { applyDocumentLanguage } from '@/lib/i18n'
+import { startUiLanguage } from '@/hooks/use-ui-language'
 import { App } from './App'
 
-applyDocumentLanguage('extension_name')
-ReactDOM.createRoot(document.getElementById('root')!).render(<App />)
+// Render after the language setting is applied, so the popup never flashes the browser language first
+void startUiLanguage('extension_name')
+  .catch(console.error)
+  .then(() => {
+    ReactDOM.createRoot(document.getElementById('root')!).render(<App />)
+  })

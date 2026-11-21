@@ -15,6 +15,7 @@ import { isModelSupported, isTextAutospaceSupported } from '@/lib/support'
 import { addSiteToBlacklist } from '@/lib/url-list'
 import { isValidUrl, shouldShowActiveStatus } from '@/lib/urls'
 import { useSettings } from '@/hooks/use-settings'
+import { useUiLanguage } from '@/hooks/use-ui-language'
 import { cn } from '@/lib/utils'
 
 type NoticeType = 'info' | 'success' | 'error'
@@ -40,6 +41,7 @@ async function isContentScriptLoaded(tabId: number) {
 }
 
 export function App() {
+  useUiLanguage()
   const { settings, reload } = useSettings()
   const [tab, setTab] = useState<ActiveTab>()
   const [aiSupported, setAiSupported] = useState(false)

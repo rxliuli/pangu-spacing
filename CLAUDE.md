@@ -34,3 +34,4 @@
 - `lib/settings.ts` keeps the pangu.js extension's storage keys and defaults. Don't rename them.
 - `lib/ai-spacing/` is copied from pangu.js. Keep it close to upstream so later fixes can be pulled in; adapt only the browser API calls.
 - Every user-facing string lives in all three of `public/_locales/{en,zh_CN,zh_TW}`. Inline markup in a message is `<a>...</a>` or `<code>...</code>`, rendered by `RichMessage`, never through innerHTML. `tests/unit/i18n.test.ts` checks the keys and markup match.
+- Extension pages render strings through `t()` in `lib/i18n.ts`, which honors the `ui_language` setting (bundled copies of `_locales`) and otherwise falls back to `browser.i18n`. Entry points call `startUiLanguage()` before rendering, and root components call `useUiLanguage()` so a change repaints them. The manifest's name and description always follow the browser language.

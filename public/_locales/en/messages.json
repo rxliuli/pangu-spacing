@@ -113,6 +113,15 @@
   "label_other_settings": {
     "message": "Other settings"
   },
+  "label_ui_language": {
+    "message": "Language"
+  },
+  "ui_language_description": {
+    "message": "Changes the language of the popup and this page. The extension's name in the browser always follows the browser language."
+  },
+  "ui_language_auto": {
+    "message": "Follow browser"
+  },
   "label_is_sound_effects_muted": {
     "message": "Too noisy, mute it"
   },

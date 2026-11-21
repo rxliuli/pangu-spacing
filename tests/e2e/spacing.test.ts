@@ -223,4 +223,25 @@ describe('i18n', () => {
       await popup.getByRole('button', { name: expected.manual }).waitFor()
     })
   }
+
+  // Runs on every platform: the override does not depend on the browser UI language
+  it('switches the language from the options page, live in open pages', async () => {
+    await start()
+    const options = await openOptions()
+    const popup = await h!.openExtensionPage('popup.html')
+    await popup.getByRole('button', { name: titles['en-US']!.manual }).waitFor()
+
+    await options.getByLabel('Language').selectOption('zh_CN')
+    await options.getByRole('heading', { level: 1, name: titles['zh-CN']!.title }).waitFor()
+    expect(await options.evaluate(() => document.documentElement.lang)).toBe('zh-CN')
+    await popup.getByRole('button', { name: titles['zh-CN']!.manual }).waitFor()
+
+    // A page opened later starts in the chosen language
+    const another = await h!.openExtensionPage('popup.html')
+    await another.getByRole('button', { name: titles['zh-CN']!.manual }).waitFor()
+
+    await options.getByLabel('语言').selectOption('auto')
+    await options.getByRole('heading', { level: 1, name: titles['en-US']!.title }).waitFor()
+    await popup.getByRole('button', { name: titles['en-US']!.manual }).waitFor()
+  })
 })

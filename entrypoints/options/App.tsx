@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react'
-import { Download, Pencil, Plus, RotateCcw, Trash2 } from 'lucide-react'
+import { ChevronDown, Download, Pencil, Plus, RotateCcw, Trash2 } from 'lucide-react'
 import { Logo } from '@/components/logo'
 import { RichMessage } from '@/components/rich-message'
 import { SettingSwitch } from '@/components/setting-switch'
@@ -16,12 +16,13 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Segmented } from '@/components/ui/segmented'
 import { useSettings } from '@/hooks/use-settings'
+import { useUiLanguage } from '@/hooks/use-ui-language'
 import {
   downloadModel,
   getModelAvailability,
   type AiModelAvailability,
 } from '@/lib/ai-spacing/models'
-import { t, type MessageKey } from '@/lib/i18n'
+import { t, type MessageKey, type UiLanguageSetting } from '@/lib/i18n'
 import { updateSettings, type Settings } from '@/lib/settings'
 import { playSound } from '@/lib/sounds'
 import { isModelSupported, isTextAutospaceSupported } from '@/lib/support'
@@ -31,6 +32,7 @@ import {
   removeFromActiveList,
   restoreActiveListDefaults,
 } from '@/lib/url-list'
+import { cn } from '@/lib/utils'
 
 const MATCH_PATTERNS_URL =
   'https://developer.chrome.com/docs/extensions/develop/concepts/match-patterns'
@@ -47,7 +49,7 @@ function Section({
 }) {
   return (
     <section className="space-y-3">
-      <h2 className="px-1 text-xs font-semibold tracking-wide text-muted-foreground uppercase">
+      <h2 className="px-4 text-xs font-semibold tracking-wide text-muted-foreground uppercase sm:px-1">
         {title}
       </h2>
       {children}
@@ -55,9 +57,10 @@ function Section({
   )
 }
 
+// Phones get iOS Settings-style grouped rows: panels run edge to edge, so the panel's own padding is the only inset. Wider screens keep floating cards
 function Panel({ children }: { children: ReactNode }) {
   return (
-    <div className="space-y-4 rounded-xl border bg-card p-5 text-card-foreground shadow-xs">
+    <div className="space-y-4 border-y bg-card p-4 text-card-foreground sm:rounded-xl sm:border sm:p-5 sm:shadow-xs">
       {children}
     </div>
   )
@@ -110,14 +113,15 @@ function UrlList({ settings }: { settings: Settings }) {
   }
 
   const editor = (
-    <li className="space-y-1.5">
-      <div className="flex gap-2">
+    <li className="space-y-1.5 px-3 py-2 max-sm:px-4">
+      {/* On phones the input takes its own line, so the URL is not squeezed beside the buttons */}
+      <div className="flex flex-wrap gap-2">
         <Input
           ref={inputRef}
           value={editing?.value ?? ''}
           placeholder={t('placeholder_enter_url')}
           aria-invalid={!!editing?.error}
-          className="font-mono text-[13px]"
+          className="flex-1 font-mono text-[13px] max-sm:basis-full pointer-coarse:h-11 pointer-coarse:text-base"
           onChange={(e) =>
             setEditing((current) =>
               current && { index: current.index, value: e.target.value },
@@ -128,8 +132,14 @@ function UrlList({ settings }: { settings: Settings }) {
             if (e.key === 'Escape') setEditing(undefined)
           }}
         />
-        <Button onClick={() => void save()}>{t('button_save')}</Button>
-        <Button variant="ghost" onClick={() => setEditing(undefined)}>
+        <Button className="pointer-coarse:h-11 max-sm:flex-1" onClick={() => void save()}>
+          {t('button_save')}
+        </Button>
+        <Button
+          variant="ghost"
+          className="pointer-coarse:h-11 max-sm:flex-1"
+          onClick={() => setEditing(undefined)}
+        >
           {t('button_cancel')}
         </Button>
       </div>
@@ -143,9 +153,13 @@ function UrlList({ settings }: { settings: Settings }) {
 
   return (
     <div className="space-y-3">
-      <ul className="space-y-1.5" data-testid="url-list">
+      {/* One list split by hairlines rather than a card per row. On phones it also bleeds to the panel edges, so patterns start at the same inset as everything else */}
+      <ul
+        className="divide-y overflow-hidden rounded-lg border max-sm:-mx-4 max-sm:rounded-none max-sm:border-x-0"
+        data-testid="url-list"
+      >
         {urls.length === 0 && editing?.index !== 'new' && (
-          <li className="rounded-lg border border-dashed px-4 py-6 text-center text-[13px] text-muted-foreground">
+          <li className="px-4 py-6 text-center text-[13px] text-muted-foreground">
             {t('empty_list')}
           </li>
         )}
@@ -155,11 +169,12 @@ function UrlList({ settings }: { settings: Settings }) {
           ) : (
             <li
               key={url}
-              className="group flex items-center gap-1 rounded-lg border bg-background pr-1 transition-colors hover:bg-accent/50"
+              className="group flex items-center gap-1 pr-1 transition-colors hover:bg-accent/50 max-sm:pr-2"
             >
               <button
                 type="button"
-                className="min-w-0 flex-1 truncate px-3 py-2 text-left font-mono text-[13px]"
+                // Phones wrap long patterns instead of cutting them off, since there is no hover to reveal the rest
+                className="min-w-0 flex-1 truncate px-3 py-2 text-left font-mono text-[13px] max-sm:px-4 max-sm:break-all max-sm:whitespace-normal pointer-coarse:py-2.5"
                 title={t('button_edit')}
                 onClick={() => setEditing({ index, value: url })}
               >
@@ -168,7 +183,7 @@ function UrlList({ settings }: { settings: Settings }) {
               <Button
                 variant="ghost"
                 size="icon"
-                className="size-8 text-muted-foreground"
+                className="size-8 text-muted-foreground pointer-coarse:size-10"
                 aria-label={`${t('button_edit')} ${url}`}
                 onClick={() => setEditing({ index, value: url })}
               >
@@ -177,7 +192,7 @@ function UrlList({ settings }: { settings: Settings }) {
               <Button
                 variant="ghost"
                 size="icon"
-                className="size-8 text-muted-foreground hover:text-destructive-foreground"
+                className="size-8 text-muted-foreground hover:text-destructive-foreground pointer-coarse:size-10"
                 aria-label={`${t('button_remove')} ${url}`}
                 onClick={() =>
                   void removeFromActiveList(index).catch((error) =>
@@ -198,6 +213,7 @@ function UrlList({ settings }: { settings: Settings }) {
           <Button
             variant="outline"
             size="sm"
+            className="pointer-coarse:h-10"
             onClick={() => setEditing({ index: 'new', value: '' })}
           >
             <Plus />
@@ -206,7 +222,7 @@ function UrlList({ settings }: { settings: Settings }) {
         )}
         <AlertDialog>
           <AlertDialogTrigger asChild>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" className="pointer-coarse:h-10">
               <RotateCcw />
               {t('button_restore_defaults')}
             </Button>
@@ -238,6 +254,22 @@ function UrlList({ settings }: { settings: Settings }) {
         {t('link_learn_match_patterns')}
       </a>
     </div>
+  )
+}
+
+// The quote fills a whole phone screen, so phones show three lines until it is tapped. Wider screens always show it all
+function Quote() {
+  const [expanded, setExpanded] = useState(false)
+  return (
+    <blockquote
+      className={cn(
+        'border-l-2 pl-4 text-[13px] leading-relaxed text-muted-foreground',
+        !expanded && 'max-sm:line-clamp-3 max-sm:cursor-pointer',
+      )}
+      onClick={() => setExpanded(true)}
+    >
+      {t('quote')}
+    </blockquote>
   )
 }
 
@@ -301,7 +333,63 @@ function AiModelStatus() {
   )
 }
 
+// Each language is named in itself, so a reader can find their own language whatever the page is showing
+const UI_LANGUAGE_OPTIONS: { value: Exclude<UiLanguageSetting, 'auto'>; label: string; lang: string }[] = [
+  { value: 'en', label: 'English', lang: 'en' },
+  { value: 'zh_CN', label: '简体中文', lang: 'zh-CN' },
+  { value: 'zh_TW', label: '繁體中文', lang: 'zh-TW' },
+]
+
+function UiLanguageSelect({
+  value,
+  disabled,
+  onChange,
+}: {
+  value: UiLanguageSetting
+  disabled: boolean
+  onChange: (value: UiLanguageSetting) => void
+}) {
+  return (
+    // The description spans the full width below the label row: beside the select it was squeezed into a narrow column on phones
+    <div className="space-y-1.5">
+      <div className="flex items-center justify-between gap-4">
+        <label
+          htmlFor="ui-language"
+          className="text-sm leading-5 font-medium pointer-coarse:text-base"
+        >
+          {t('label_ui_language')}
+        </label>
+        {/* Native select for the platform picker on phones, drawn like shadcn's: the browser arrow sits flush against the edge, so it is hidden and replaced by an inset chevron */}
+        <div className="relative shrink-0">
+          <select
+            id="ui-language"
+            value={value}
+            disabled={disabled}
+            onChange={(e) => onChange(e.target.value as UiLanguageSetting)}
+            className="h-9 w-full appearance-none rounded-md border border-input bg-transparent py-1 pr-9 pl-3 text-sm shadow-xs transition-colors outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50 disabled:cursor-not-allowed disabled:opacity-50 dark:bg-input/30 dark:hover:bg-input/50 pointer-coarse:h-11 pointer-coarse:text-base"
+          >
+            <option value="auto">{t('ui_language_auto')}</option>
+            {UI_LANGUAGE_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value} lang={option.lang}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <ChevronDown
+            aria-hidden="true"
+            className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground"
+          />
+        </div>
+      </div>
+      <p className="text-[13px] leading-relaxed text-muted-foreground">
+        {t('ui_language_description')}
+      </p>
+    </div>
+  )
+}
+
 export function App() {
+  useUiLanguage()
   const { settings, reload } = useSettings()
   const [aiSupported, setAiSupported] = useState(false)
   const textAutospaceSupported = isTextAutospaceSupported()
@@ -335,24 +423,23 @@ export function App() {
 
   return (
     <div className="min-h-screen bg-muted/40">
-      <main className="mx-auto max-w-2xl space-y-8 px-4 py-10 sm:px-6">
-        <header className="space-y-5">
-          <div className="flex items-center gap-4">
-            <div className="flex size-14 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm">
-              <Logo className="size-10" />
+      {/* No side padding on phones: panels run edge to edge, and the text outside them insets itself by the same 16px as panel content */}
+      <main className="mx-auto max-w-2xl space-y-6 py-6 sm:space-y-8 sm:px-6 sm:py-10">
+        <header className="space-y-4 px-4 sm:space-y-5 sm:px-0">
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div className="flex size-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-sm sm:size-14">
+              <Logo className="size-8 sm:size-10" />
             </div>
-            <div>
-              <h1 className="text-xl font-semibold tracking-tight">
+            <div className="min-w-0">
+              <h1 className="text-lg leading-snug font-semibold tracking-tight sm:text-xl">
                 {t('extension_title')}
               </h1>
-              <p className="mt-1 text-sm text-muted-foreground">
+              <p className="mt-1 text-[13px] text-muted-foreground sm:text-sm">
                 {t('options_subtitle')}
               </p>
             </div>
           </div>
-          <blockquote className="border-l-2 pl-4 text-[13px] leading-relaxed text-muted-foreground">
-            {t('quote')}
-          </blockquote>
+          <Quote />
         </header>
 
         <Section title={t('label_settings')}>
@@ -363,6 +450,8 @@ export function App() {
                 aria-label={t('label_spacing_mode')}
                 value={settings?.spacing_mode}
                 onValueChange={(mode) => void onSpacingMode(mode)}
+                // The two labels are full sentences, which wrap into three lines side by side on a phone
+                className="max-sm:grid-flow-row"
                 options={[
                   { value: 'spacing_when_load', label: t('spacing_when_load') },
                   { value: 'spacing_when_click', label: t('spacing_when_click') },
@@ -399,6 +488,13 @@ export function App() {
         </Section>
 
         <Section title={t('label_other_settings')}>
+          <Panel>
+            <UiLanguageSelect
+              value={settings?.ui_language ?? 'auto'}
+              disabled={!settings}
+              onChange={(language) => void save({ ui_language: language })}
+            />
+          </Panel>
           <Panel>
             <SettingSwitch
               label={t('label_is_sound_effects_muted')}
@@ -462,12 +558,12 @@ export function App() {
             />
             <AiModelStatus />
           </Panel>
-          <p className="px-1 text-[13px] text-muted-foreground">
+          <p className="px-4 text-[13px] text-muted-foreground sm:px-1">
             {t('settings_refresh_required')}
           </p>
         </Section>
 
-        <footer className="border-t pt-6 text-center text-[13px] text-muted-foreground">
+        <footer className="mx-4 border-t pt-6 text-center text-[13px] text-muted-foreground sm:mx-0">
           <p>
             <RichMessage id="credits" href="https://github.com/vinta/pangu.js" />
           </p>

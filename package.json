@@ -2,7 +2,7 @@
   "name": "pangu-spacing",
   "description": "Paranoid text spacing for every browser, built on pangu.js",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "wxt",

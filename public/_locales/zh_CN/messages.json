@@ -113,6 +113,15 @@
   "label_other_settings": {
     "message": "其他设置"
   },
+  "label_ui_language": {
+    "message": "语言"
+  },
+  "ui_language_description": {
+    "message": "更改弹出窗口和本页面的语言。浏览器里显示的扩展名称始终跟随浏览器语言。"
+  },
+  "ui_language_auto": {
+    "message": "跟随浏览器"
+  },
   "label_is_sound_effects_muted": {
     "message": "太吵了，静音"
   },

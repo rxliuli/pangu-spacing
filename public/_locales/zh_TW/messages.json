@@ -113,6 +113,15 @@
   "label_other_settings": {
     "message": "其他設定"
   },
+  "label_ui_language": {
+    "message": "語言"
+  },
+  "ui_language_description": {
+    "message": "變更彈出視窗和本頁面的語言。瀏覽器裡顯示的擴充功能名稱一律跟隨瀏覽器語言。"
+  },
+  "ui_language_auto": {
+    "message": "跟隨瀏覽器"
+  },
   "label_is_sound_effects_muted": {
     "message": "太吵了，靜音"
   },
