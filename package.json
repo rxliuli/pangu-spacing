@@ -1,8 +1,9 @@
 {
   "name": "pangu-spacing",
-  "description": "Paranoid text spacing for every browser, built on pangu.js",
+  "description": "Unofficial cross-browser extension for paranoid text spacing, built on pangu.js",
   "private": true,
-  "version": "0.0.0",
+  "license": "GPL-3.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -21,7 +22,7 @@
     "init-project": "vite-node lib/build/init.ts"
   },
   "dependencies": {
-    "@extport/sdk": "^0.0.10",
+    "@extport/sdk": "^0.0.11",
     "@tailwindcss/vite": "^4.3.5",
     "@webext-core/messaging": "^4.0.1",
     "class-variance-authority": "^0.7.1",
@@ -38,7 +39,7 @@
     "urlpattern-polyfill": "^10.1.0"
   },
   "devDependencies": {
-    "@extport/wxt": "^0.0.13",
+    "@extport/wxt": "^0.0.15",
     "@types/dom-chromium-ai": "0.0.17",
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",

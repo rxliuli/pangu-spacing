@@ -60,14 +60,15 @@ jobs:
             ${{ env.DIRECTORY }}/.output/${{ env.PROJECT_NAME }}-${{ needs.version.outputs.version }}-firefox.zip
             ${{ env.DIRECTORY }}/.output/${{ env.PROJECT_NAME }}-${{ needs.version.outputs.version }}-sources.zip
 
-      # Store publishing is temporarily disabled until #1 (vinta/pangu.js#348) is decided; uncomment when ready to publish publicly.
+      # Chrome Web Store publishing is kept disabled while vinta/pangu.js hosts the official Chrome extension.
       # - name: Push to Chrome Web Store
       #   uses: extport-dev/actions/push@v1
       #   with:
       #     # file/version/extension inferred from .output/, its manifest.json, and extport.config.json.
       #     store: chrome
       #     api-key: ${{ secrets.EXTPORT_API_KEY }}
-      #
+
+      # Edge, Firefox, and Safari store publishing are temporarily disabled until initial store reviews pass.
       # - name: Push to Edge Add-ons
       #   uses: extport-dev/actions/push@v1
       #   with:
@@ -75,7 +76,7 @@ jobs:
       #     # when no dedicated edge one was built.
       #     store: edge
       #     api-key: ${{ secrets.EXTPORT_API_KEY }}
-      #
+
       # - name: Push to Firefox AMO
       #   uses: extport-dev/actions/push@v1
       #   with:
@@ -83,11 +84,12 @@ jobs:
       #     store: firefox
       #     api-key: ${{ secrets.EXTPORT_API_KEY }}
 
-  # Safari build and App Store Connect upload are temporarily disabled until #1 (vinta/pangu.js#348) is decided.
   # safari:
   #   needs: version
   #   if: needs.version.outputs.changed == 'true'
-  #   runs-on: macos-26
+  #   # Xcode 27 (iOS 27 SDK) is required for App Store uploads from April 2027 (ITMS-90725).
+  #   runs-on: xcode-27
+  #   timeout-minutes: 15
   #   continue-on-error: true
   #   steps:
   #     - uses: actions/checkout@v5
@@ -97,19 +99,19 @@ jobs:
   #         node-version: 24
   #         cache: 'pnpm'
   #     - name: Install dependencies
-  #       run: pnpm install
+  #       run: pnpm install --frozen-lockfile
   #
   #     - name: Build Safari extension
   #       run: pnpm build:safari
   #
   #     - uses: extport-dev/actions/safari-build@v1
   #       with:
-  #         # project-path/team-id inferred from extport.config.json (synced by
-  #         # @extport/wxt). Automatic code signing via -allowProvisioningUpdates
-  #         # — no certificate/provisioning-profile secrets needed.
+  #         # project-path/team-id inferred from extport.config.json (synced by @extport/wxt).
   #         issuer-id: ${{ secrets.APPLE_API_ISSUER }}
   #         key-id: ${{ secrets.APPLE_API_KEY_ID }}
   #         key-base64: ${{ secrets.APPLE_API_KEY }}
+  #         certificate-base64: ${{ secrets.APPLE_CERTIFICATE_BASE64 }}
+  #         certificate-password: ${{ secrets.APPLE_CERTIFICATE_PASSWORD }}
   #         version: ${{ needs.version.outputs.version }}
   #
   #     - name: Register the Safari version with extport

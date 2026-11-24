@@ -1,6 +1,6 @@
-# Pangu Spacing
+# Pangu Spacing (Unofficial)
 
-Automatically inserts whitespace between CJK characters and half-width letters, digits and symbols on web pages. A cross-browser port of the [pangu.js](https://github.com/vinta/pangu.js) Chrome extension, built with WXT, React and shadcn/ui, for Chrome, Edge, Firefox (desktop and Android) and Safari (macOS and iOS).
+Automatically inserts whitespace between CJK characters and half-width letters, digits and symbols on web pages. An unofficial cross-browser extension based on [pangu.js](https://github.com/vinta/pangu.js) (not affiliated with Vinta), built with WXT, React and shadcn/ui, for Chrome, Edge, Firefox (desktop and Android) and Safari (macOS and iOS).
 
 It keeps the original extension's features and settings keys:
 
@@ -50,4 +50,4 @@ pnpm build:safari   # macOS with Xcode
 
 ## License
 
-GPL-3.0, see `LICENSE`. Code and assets from pangu.js are MIT licensed, see `THIRD_PARTY_NOTICES`.
+[GPL-3.0](./LICENSE). Code and assets from pangu.js are MIT licensed, see [THIRD_PARTY_NOTICES](./THIRD_PARTY_NOTICES).

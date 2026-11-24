@@ -1,9 +1,9 @@
 {
   "extension_name": {
-    "message": "Pangu Spacing"
+    "message": "Pangu Spacing（非官方）"
   },
   "extension_description": {
-    "message": "自动在网页的中文和英文、数字、符号之间插入空格。（摊手）没办法，处女座都有强迫症。"
+    "message": "非官方 pangu.js 扩展，自动在网页的中文与英文、数字、符号之间插入空格。"
   },
   "extension_title": {
     "message": "为什么你们就是不能加个空格呢？"
@@ -177,6 +177,6 @@
     "message": "部分功能需要刷新网页之后才会生效"
   },
   "credits": {
-    "message": "基于 Vinta 的 <a>pangu.js</a>，以 MIT 许可证发布。"
+    "message": "非官方跨浏览器扩展，采用 GPL-3.0 许可证发布。基于 Vinta 的 <a>pangu.js</a>（MIT）。"
   }
 }

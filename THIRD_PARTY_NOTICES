@@ -1,4 +1,4 @@
-Parts of this extension come from the pangu.js Chrome extension (https://github.com/vinta/pangu.js): the settings schema, URL filters, AI spacing in lib/ai-spacing, icons, and sounds. They are used under the following license.
+Parts of this extension come from the pangu.js Chrome extension (https://github.com/vinta/pangu.js): the settings schema, URL filters, AI spacing in lib/ai-spacing, and sounds. They are used under the following license.
 
 The MIT License (MIT)
 

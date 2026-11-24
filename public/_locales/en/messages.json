@@ -1,9 +1,9 @@
 {
   "extension_name": {
-    "message": "Pangu Spacing"
+    "message": "Pangu Spacing (Unofficial)"
   },
   "extension_description": {
-    "message": "Automatically inserts whitespace between CJK characters and half-width letters, digits and symbols on web pages."
+    "message": "Unofficial pangu.js extension. Automatically adds spaces between CJK, Latin letters, digits, and symbols."
   },
   "extension_title": {
     "message": "Why can't you just add a space?"
@@ -177,6 +177,6 @@
     "message": "Some settings take effect only after the page is reloaded"
   },
   "credits": {
-    "message": "Based on <a>pangu.js</a> by Vinta, released under the MIT License."
+    "message": "Unofficial cross-browser extension licensed under GPL-3.0. Based on <a>pangu.js</a> by Vinta (MIT)."
   }
 }

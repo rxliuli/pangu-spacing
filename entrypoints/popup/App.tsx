@@ -281,7 +281,7 @@ export function App() {
             {t('settings')}
           </button>
           <a
-            href="https://github.com/vinta/pangu.js"
+            href="https://github.com/rxliuli/pangu-spacing"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-1 hover:text-foreground"
