@@ -1,5 +1,6 @@
 import { defineConfig, type UserManifest } from 'wxt'
 import tailwindcss from '@tailwindcss/vite'
+import { localizeSafariProject } from './lib/build/safari-i18n'
 
 export default defineConfig({
   modules: ['@wxt-dev/module-react', '@extport/wxt'],
@@ -88,5 +89,22 @@ export default defineConfig({
   },
   webExt: {
     disabled: true,
+  },
+  hooks: {
+    // Runs after @extport/wxt converts and writes the default English setup page
+    'build:done': async (wxt) => {
+      if (wxt.config.browser !== 'safari' || process.platform !== 'darwin') {
+        return
+      }
+      const projectName = wxt.config.manifest.name
+      if (!projectName) return
+      const localized = await localizeSafariProject({
+        rootPath: wxt.config.root,
+        projectName,
+      })
+      if (localized) {
+        wxt.logger.success('Localized Safari host app setup pages.')
+      }
+    },
   },
 })
