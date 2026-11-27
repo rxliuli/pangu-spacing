@@ -13,7 +13,6 @@ export default defineConfig({
       developmentTeam: 'N2X78TUUFG',
       issuerId: '48f39427-c063-4e33-98d2-31de80aad0be',
       keyId: '8N27UWG9RG',
-      openProject: true,
     },
   },
   vite: () => ({
